@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTahusTable extends Migration
+class CreateTahuBulatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,14 @@ class CreateTahusTable extends Migration
      */
     public function up()
     {
-        Schema::create('tahus', function (Blueprint $table) {
+        Schema::create('tahu_bulats', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('judul_tahu');
+            $table->string('imagePath');
+            $table->text('deskripsi');
+            $table->integer('user_id');
+            $table->integer('harga');
         });
     }
 
@@ -26,6 +30,6 @@ class CreateTahusTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tahus');
+        Schema::drop('tahu_bulats');
     }
 }

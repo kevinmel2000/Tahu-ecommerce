@@ -57,3 +57,15 @@ Route::get('/admin_profile',[
    	'as' => 'admin.profile',
    	'middleware' => ['auth','admin']
 ]);
+
+Route::get('/admin/tambah_item',[
+	'uses'=> 'AdminController@getTambah',
+	'as'=> 'admin.tambah',
+	'middleware'=> ['auth','admin']
+]);
+
+Route::post('/admin/tambah_item',[
+	'uses' => 'AdminController@postTambah',
+	'as'=> 'admin.tambah',
+	'middleware' => ['auth','admin']
+]);

@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\User;
 use Auth;
 use Session;
+use App\TahuBulat;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -91,6 +93,8 @@ class UserController extends Controller
         
     }
     public function getAdminProfile(){
-    	return view ('admin.admin_profile');
+      $user_id= Auth::user()->id;
+      $tahu = DB::table('tahu_bulats')->where('user_id',$user_id)->get();
+    	return view ('admin.admin_profile')->with('tabul',$tahu);
     }
 }
