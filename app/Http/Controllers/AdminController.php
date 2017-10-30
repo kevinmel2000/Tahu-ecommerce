@@ -15,6 +15,37 @@ class AdminController extends Controller
     	return view('admin.admin_tambah_item');
     }
 
+    public function postEdit(Request $request){
+        $id = $request['postId'];
+
+        $this->validate($request,[
+            'judul' => 'required',
+            'desk'  => 'required',
+            'img'  =>  'required',
+            'hrg'  =>  'required'
+        ]);
+
+        $tahu = TahuBulat::find($id);
+        $tahu->judul_tahu = $request['judul'];
+        $tahu->deskripsi = $request['desk'];
+        $tahu->imagePath = $request['img'];
+        $tahu->harga     = $request['hrg'];
+
+        $tahu->update();
+        return response()->json(['judulbaru' => $tahu->judul_tahu,
+                                 'hargabaru' => $tahu->harga,
+                                 'deskripsibaru'=> $tahu->deskripsi ,
+                                 'imgbaru' => $tahu->imagePath
+                                ],200);
+        /*return response()->json(['message'  => $request['judul'],
+                                 'message1' => $request['desk'],
+                                 'message2' => $request['hrg'],
+                                 'message3' => $request['img'],
+                                 'message4' => $request['postId'],
+                                 'message6' => $id
+                                             ]);*/
+    }
+
 
     public function postTambah(Request $request){
 
@@ -22,7 +53,7 @@ class AdminController extends Controller
 				'judul_tahu'=> 'required | max:50',
 				'deskripsi'=>  'required | max:100',
 				'imagePath'=>  'required | max:300',
-				'harga'    =>  'required| max:5'
+				'harga'    =>  'required | max:5'
 			]);
 
     	$tahu = new TahuBulat();
@@ -39,4 +70,5 @@ class AdminController extends Controller
     	
     }
 
+   
 }

@@ -69,3 +69,9 @@ Route::post('/admin/tambah_item',[
 	'as'=> 'admin.tambah',
 	'middleware' => ['auth','admin']
 ]);
+
+Route::post('/edit',[
+	'uses' => 'AdminController@postEdit',
+	'as' => 'admin.edit',
+	'middleware' => ['auth','admin']
+]);

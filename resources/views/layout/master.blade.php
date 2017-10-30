@@ -23,6 +23,7 @@
 <script src="https://use.fontawesome.com/aa70489379.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/datatables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js "></script>
+<script type="text/javascript" src="{{URL::to('js/main.js')}}"></script>
 
 @stack('scripts')
 </body>

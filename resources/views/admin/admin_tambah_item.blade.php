@@ -5,12 +5,19 @@
 @endsection
 
 @section('content')
-	
+
   <div class="page-header">
  		 <h1>Tambah Item Tahu </h1>
 </div>
 <div class="panel panel-default">
   <div class="panel-body">
+  		@if(count($errors)>0)
+				<div class="alert alert-danger">
+					@foreach($errors->all() as $error)
+						<p>{{ $error }}</p>
+					@endforeach
+				</div>
+			 @endif
 		<form action="{{route('admin.tambah')}}" method="post">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Nama Tahu</label>
