@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\TahuBulat;
+use Auth;
 
 
 class AdminController extends Controller
@@ -69,6 +70,17 @@ class AdminController extends Controller
     	return redirect()->route('admin.profile')->with(['message'=> $message]);
     	
     }
+
+   public function getDeletePost($post_id)
+   {
+    $tahu = TahuBulat::where('id', $post_id)->first();
+    if (Auth::user()->id != $tahu->user_id) {
+        # code...
+        return redirect()->back();
+    }
+    $tahu->delete();
+    return redirect()->route('admin.profile')->with(['message'=>' berhasil dihapus']);
+   }
 
    
 }

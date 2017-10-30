@@ -75,3 +75,8 @@ Route::post('/edit',[
 	'as' => 'admin.edit',
 	'middleware' => ['auth','admin']
 ]);
+
+Route::get('/delete-post/{post_id}',[
+		'uses'=> 'AdminController@getDeletePost',
+		'as'=> 'post.delete'
+	]);

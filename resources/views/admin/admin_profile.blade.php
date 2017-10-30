@@ -32,7 +32,7 @@
 					    <td id="harga_tahu1" name ="harga_tahu1">{{$tahubulat->harga}}</td>
 					    <td id="imagePath1" name="imagePath1"><img src="{{$tahubulat->imagePath}}" class="poto-tahu" id="gambartahu"></td>
 					    <td class="interaction"><a class="btn btn-default edit" href="#" role="button">Edit</a></td>
-					    <td><a class="btn btn-danger" href="#" role="button">Hapus</a></td>
+					    <td><a class="btn btn-danger" href="{{ route('post.delete' ,['post_id' => $tahubulat->id]) }}" role="button">Hapus</a></td>
 				    </tr>
 				    @endforeach
 				
